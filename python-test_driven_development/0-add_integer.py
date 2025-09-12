@@ -23,7 +23,8 @@ def add_integer(a, b=98):
     Notes:
         - Floats are first casted to integers (truncated, not rounded).
         - float('inf') is considered invalid and raises an OverflowError.
-        - Python integers have arbitrary precision, so there's no integer overflow.
+        - Python integers have arbitrary precision, so there's 
+          no integer overflow.
     """
     if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
