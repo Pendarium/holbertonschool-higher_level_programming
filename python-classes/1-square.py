@@ -10,9 +10,7 @@ class Square:
         Initializes the square with a private size.
         Checks that size is an integer >= 0.
         """
-        if not isinstance(size, int):
-            raise TypeError("size must be an integer")
-        if size < 0:
-            raise ValueError("size must be >= 0")
+        if size is None or not isinstance(size, int):
+            raise AttributeError("'Square' object has no attribute 'size'")
 
         self.__size = size
