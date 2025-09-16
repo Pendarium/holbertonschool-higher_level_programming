@@ -2,7 +2,3 @@
 
 class square:
     pass
-
-
-
-
