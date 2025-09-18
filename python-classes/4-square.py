@@ -48,20 +48,6 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = value
 
-    def my_print(self):
-        """Print the square using the '#' character.
-
-        If the size of the square is 0, prints an empty line.
-
-        Returns:
-            None
-        """
-        if self.size == 0:
-            print()
-        else:
-            for x in range(self.size):
-                print("#" * self.size)
-
     def area(self):
         """Compute and return the area of the square.
 
