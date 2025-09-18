@@ -9,7 +9,7 @@ class Square:
     Attributes:
         __size (int): La taille du côté du carré (privée).
     """
-
+    
     def __init__(self, size=0):
         """Initialize a new Square.
 
