@@ -56,10 +56,10 @@ class Square:
         Returns:
             None
         """
-        if self.__size == 0:
+        if self.size == 0:
             print()
         else:
-            for x in range(self.__size):
+            for x in range(self.size):
                 print("#" * self.size)
 
     def area(self):
