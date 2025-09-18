@@ -1,15 +1,15 @@
 #!/usr/bin/python3
-"""Module defining a class Square with size 
-    validation, position, and area computation.
+"""Module defining a class Square with size
+validation, position, and area computation.
 """
 
 
 class Square:
-    """Represents a square with a given size and position.
+    """Represents a square defined by its size and position.
 
-    Attributes:
-        __size (int): La taille du côté du carré (privée).
-        __position (tuple): La position du carré (privée).
+    Private attributes:
+        __size (int): La taille du côté du carré.
+        __position (tuple): La position du carré sous forme de tuple (x, y).
     """
 
     def __init__(self, size=0, position=(0, 0)):
@@ -21,8 +21,8 @@ class Square:
 
         Raises:
             TypeError: Si size n'est pas un entier ou si position n'est pas un
-                tuple de 2 entiers positifs.
-            ValueError: Si size est inférieur à 0.
+                tuple de deux entiers positifs.
+            ValueError: Si size est négatif.
         """
         self.size = size
         self.position = position
@@ -32,7 +32,7 @@ class Square:
         """Get the current position of the square.
 
         Returns:
-            tuple: La position actuelle du carré.
+            tuple: La position (x, y) du carré.
         """
         return self.__position
 
@@ -41,10 +41,10 @@ class Square:
         """Set the position of the square with validation.
 
         Args:
-            value (tuple): La nouvelle position du carré.
+            value (tuple): Nouveau tuple de position (x, y).
 
         Raises:
-            TypeError: Si value n'est pas un tuple de 2 entiers positifs.
+            TypeError: Si value n'est pas un tuple de deux entiers positifs.
         """
         if not isinstance(value, tuple) or len(value) != 2:
             raise TypeError("position must be a tuple of 2 positive integers")
@@ -57,7 +57,7 @@ class Square:
         """Get the current size of the square.
 
         Returns:
-            int: La taille actuelle du carré.
+            int: La taille du côté du carré.
         """
         return self.__size
 
@@ -66,11 +66,11 @@ class Square:
         """Set the size of the square with validation.
 
         Args:
-            value (int): La nouvelle taille du carré.
+            value (int): Nouvelle taille du carré.
 
         Raises:
             TypeError: Si value n'est pas un entier.
-            ValueError: Si value est inférieur à 0.
+            ValueError: Si value est négatif.
         """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
@@ -82,7 +82,7 @@ class Square:
         """Compute and return the area of the square.
 
         Returns:
-            int: L'aire du carré.
+            int: L'aire (taille²) du carré.
         """
         return self.__size ** 2
 
@@ -97,10 +97,10 @@ class Square:
             print()
             return
 
-        # Décalage vertical (lignes vides)
+        # Décalage vertical
         for _ in range(self.__position[1]):
             print()
 
-        # Impression du carré avec décalage horizontal (espaces)
+        # Impression de chaque ligne du carré avec décalage horizontal
         for _ in range(self.__size):
             print(" " * self.__position[0] + "#" * self.__size)
