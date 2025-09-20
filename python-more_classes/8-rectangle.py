@@ -168,16 +168,3 @@ class Rectangle:
             return rect_1
         else:
             return rect_2
-        
-    @classmethod
-    def square(cls, size=0):
-        """
-        Crée un nouveau rectangle avec largeur et hauteur égales.
-
-        Args:
-            size (int): Taille de la largeur et hauteur (par défaut 0).
-
-        Returns:
-            Rectangle: Nouvelle instance de Rectangle carrée.
-        """
-        return cls(size, size)
