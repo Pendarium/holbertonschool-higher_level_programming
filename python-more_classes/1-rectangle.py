@@ -5,7 +5,7 @@
 
 class Rectangle:
     """Class Rectangle: représente un rectangle avec largeur et hauteur.
-    
+
     Attributes:
         __width (int): largeur du rectangle (privé)
         __height (int): hauteur du rectangle (privé)
