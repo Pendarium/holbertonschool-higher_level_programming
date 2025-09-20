@@ -76,7 +76,7 @@ class Rectangle:
     def area(self):
         """
         Returns:
-            int: Aire du rectangle (largeur × hauteur)
+            int: Aire du rectangle (largeur * hauteur)
         """
         return self.width * self.height
 
