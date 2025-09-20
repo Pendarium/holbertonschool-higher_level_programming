@@ -4,45 +4,49 @@
 
 
 class Rectangle:
-    number_of_instances = 0
-    """Class Rectangle: représente un rectangle avec largeur et hauteur.
+    """
+    Classe Rectangle : représente un rectangle avec largeur et hauteur.
 
-    Attributes:
-        __width (int): largeur du rectangle (privé)
-        __height (int): hauteur du rectangle (privé)
+    Class Attributes:
+        number_of_instances (int): Nombre d'instances actives de Rectangle
     """
 
+    number_of_instances = 0
+
     def __init__(self, width=0, height=0):
-        """Initialise un nouvel objet Rectangle.
+        """
+        Initialise un nouvel objet
+        Rectangle et incrémente le compteur d'instances.
 
         Args:
-            width (int): largeur du rectangle (valeur par défaut 0)
-            height (int): hauteur du rectangle (valeur par défaut 0)
+            width (int): Largeur du rectangle (par défaut 0)
+            height (int): Hauteur du rectangle (par défaut 0)
         """
         self.width = width
         self.height = height
         Rectangle.number_of_instances += 1
-        """increment le nombre d'instances"""
 
     @property
     def width(self):
-        """Getter de l'attribut width.
+        """
+        Getter de l'attribut width.
 
         Returns:
-            int: la largeur actuelle du rectangle
+            int: La largeur actuelle du rectangle
         """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """Setter de l'attribut width.
+        """
+        Setter de l'attribut width.
 
         Args:
-            value (int): nouvelle largeur du rectangle
+            value (int): Nouvelle largeur du rectangle
 
         Raises:
-            TypeError: si value n'est pas un entier
-            ValueError: si value est inférieur à 0
+            TypeError: Si value n'est pas un entier
+            ValueError: Si value est inférieur à 0
         """
         if not isinstance(value, int):
             raise TypeError("width must be an integer")
@@ -52,23 +56,25 @@ class Rectangle:
 
     @property
     def height(self):
-        """Getter de l'attribut height.
+        """
+        Getter de l'attribut height.
 
         Returns:
-            int: la hauteur actuelle du rectangle
+            int: La hauteur actuelle du rectangle
         """
         return self.__height
 
     @height.setter
     def height(self, value):
-        """Setter de l'attribut height.
+        """
+        Setter de l'attribut height.
 
         Args:
-            value (int): nouvelle hauteur du rectangle
+            value (int): Nouvelle hauteur du rectangle
 
         Raises:
-            TypeError: si value n'est pas un entier
-            ValueError: si value est inférieur à 0
+            TypeError: Si value n'est pas un entier
+            ValueError: Si value est inférieur à 0
         """
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
@@ -78,6 +84,8 @@ class Rectangle:
 
     def area(self):
         """
+        Calcule l'aire du rectangle.
+
         Returns:
             int: Aire du rectangle (largeur * hauteur)
         """
@@ -85,17 +93,20 @@ class Rectangle:
 
     def perimeter(self):
         """
+        Calcule le périmètre du rectangle.
+
         Returns:
-            int: Périmètre du rectangle, ou 0 si largeur ou hauteur est nulle
+            int: Périmètre du rectangle,
+            ou 0 si largeur ou hauteur est nulle
         """
         if self.height == 0 or self.width == 0:
             return 0
-        else:
-            return 2 * (self.width + self.height)
+        return 2 * (self.width + self.height)
 
     def __str__(self):
-        """Retourne la représentation graphique
-            du rectangle avec le caractère #.
+        """
+        Retourne la représentation graphique
+        du rectangle avec le caractère #.
 
         Returns:
             str: Chaîne représentant le rectangle,
@@ -110,8 +121,9 @@ class Rectangle:
         return "\n".join(line)
 
     def __repr__(self):
-        """Retourne une chaîne représentant le
-        rectangle pour recréer une nouvelle instance.
+        """
+        Retourne une chaîne représentant le rectangle
+        pour recréer une nouvelle instance.
 
         Returns:
             str: Chaîne au format 'Rectangle(width, height)'
@@ -119,12 +131,12 @@ class Rectangle:
         return "Rectangle({}, {})".format(self.width, self.height)
 
     def __del__(self):
-        """Affiche un message lors de la suppression
-            d'une instance du rectangle.
+        """
+        Affiche un message lors de la suppression d'une instance
+        et décrémente le compteur d'instances.
 
         Returns:
             None
         """
         Rectangle.number_of_instances -= 1
-        """decrement le nombre d'instances"""
         print("Bye rectangle...")
