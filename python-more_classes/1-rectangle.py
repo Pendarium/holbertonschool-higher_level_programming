@@ -72,3 +72,20 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    def area(self):
+        """
+        Returns:
+            int: Aire du rectangle (largeur × hauteur)
+        """
+        return self.width * self.height
+
+    def perimeter(self):
+        """
+        Returns:
+            int: Périmètre du rectangle, ou 0 si largeur ou hauteur est nulle
+        """
+        if self.height == 0 or self.width == 0:
+            return 0
+        else:
+            return 2 * (self.width + self.height)
