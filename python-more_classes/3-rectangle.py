@@ -91,10 +91,12 @@ class Rectangle:
             return 2 * (self.width + self.height)
 
     def __str__(self):
-        """Retourne la représentation graphique du rectangle avec le caractère #.
+        """Retourne la représentation graphique
+            du rectangle avec le caractère #.
 
         Returns:
-            str: Chaîne représentant le rectangle, ou chaîne vide si width ou height est 0.
+            str: Chaîne représentant le rectangle,
+            ou chaîne vide si width ou height est 0.
         """
         if self.__width == 0 or self.__height == 0:
             return ""
