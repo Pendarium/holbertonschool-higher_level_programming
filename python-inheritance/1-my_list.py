@@ -25,4 +25,8 @@ class MyList(list):
         Returns:
             None
         """
-        print(sorted(self))
+        if isinstance(self, int):
+            if self < 0:
+                print(sorted(self))
+        else:
+            print(sorted(self))
