@@ -1,4 +1,15 @@
 >>> MyList = __import__('1-my_list').MyList
+
+# Test avec liste vide
+>>> my_list = MyList()
+>>> print(my_list)
+[]
+>>> my_list.print_sorted()
+[]
+>>> print(my_list)
+[]
+
+# Test avec nombres négatifs
 >>> my_list = MyList()
 >>> my_list.append(3)
 >>> my_list.append(-1)
