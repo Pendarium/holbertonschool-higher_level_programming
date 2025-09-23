@@ -39,3 +39,21 @@
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [TypeError] empty_string must be an integer
+
+>>> try:
+...     bg.integer_validator("test_str", "not_an_int")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] test_str must be an integer
+
+>>> try:
+...     bg.integer_validator("test_float", 3.14)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] test_float must be an integer
+
+>>> try:
+...     bg.integer_validator("test_none", None)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] test_none must be an integer
