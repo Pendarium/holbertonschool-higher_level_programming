@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""
+
+
+def is_same_class(obj, a_class):
+    """
 Module: is_same_class
 
 Description:
@@ -13,10 +16,7 @@ Args:
 Returns:
     bool: True si l'objet est exactement une instance de la classe,
           False sinon.
-"""
-
-
-def is_same_class(obj, a_class):
+    """
     if obj.__class__ != a_class:
         return False
     else:
