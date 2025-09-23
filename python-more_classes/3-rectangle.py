@@ -10,7 +10,7 @@ class Rectangle:
         __width (int): largeur du rectangle (privé)
         __height (int): hauteur du rectangle (privé)
     """
-
+ 
     def __init__(self, width=0, height=0):
         """Initialise un nouvel objet Rectangle.
 
