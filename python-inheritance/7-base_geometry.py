@@ -30,14 +30,14 @@ class BaseGeometry:
         """
         Raises:
             Exception: area() is not implemented.
-        
+
         Description:
             Lève une exception pour indiquer que
             la méthode doit être implémentée 
             dans une sous-classe.
         """
         raise Exception("area() is not implemented")
-    
+
     def integer_validator(self, name, value):
         """
         Validates that value is a positive integer.
