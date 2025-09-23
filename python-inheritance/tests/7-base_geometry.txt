@@ -1,59 +1,146 @@
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
->>> bg.integer_validator("my_int", 12)
->>> bg.integer_validator("width", 89)
+# Tests valides integer_validator avec différents noms et valeurs
+>>> bg.integer_validator("length", 1)
+>>> bg.integer_validator("width", 100)
+>>> bg.integer_validator("height", 999999)
+>>> bg.integer_validator("depth", 42)
 
->>> try:
-...     bg.integer_validator("name", "John")
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-[TypeError] name must be an integer
-
->>> try:
-...     bg.integer_validator("age", 0)
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-[ValueError] age must be greater than 0
-
->>> try:
-...     bg.integer_validator("distance", -4)
-... except Exception as e:
-...     print("[{}] {}".format(e.__class__.__name__, e))
-[ValueError] distance must be greater than 0
-
+# Test area() doit lever une exception
 >>> try:
 ...     bg.area()
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [Exception] area() is not implemented
 
+# Tests type invalide : str
 >>> try:
-...     bg.integer_validator("empty_value", None)
+...     bg.integer_validator("name", "abc")
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
-[TypeError] empty_value must be an integer
+[TypeError] name must be an integer
 
 >>> try:
-...     bg.integer_validator("empty_string", "")
+...     bg.integer_validator("empty_str", "")
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
-[TypeError] empty_string must be an integer
+[TypeError] empty_str must be an integer
+
+# Tests type invalide : float
+>>> try:
+...     bg.integer_validator("pi", 3.14)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] pi must be an integer
 
 >>> try:
-...     bg.integer_validator("test_str", "not_an_int")
+...     bg.integer_validator("zero_point", 0.0)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
-[TypeError] test_str must be an integer
+[TypeError] zero_point must be an integer
+
+# Tests type invalide : None
+>>> try:
+...     bg.integer_validator("none_val", None)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] none_val must be an integer
+
+# Tests type invalide : list
+>>> try:
+...     bg.integer_validator("list_val", [1,2,3])
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] list_val must be an integer
+
+# Tests type invalide : dict
+>>> try:
+...     bg.integer_validator("dict_val", {"a":1})
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] dict_val must be an integer
+
+# Tests type invalide : tuple
+>>> try:
+...     bg.integer_validator("tuple_val", (1,2))
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] tuple_val must be an integer
+
+# Tests type invalide : set
+>>> try:
+...     bg.integer_validator("set_val", {1,2})
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] set_val must be an integer
+
+# Tests valeur invalide : zéro ou négative
+>>> try:
+...     bg.integer_validator("zero_val", 0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[ValueError] zero_val must be greater than 0
 
 >>> try:
-...     bg.integer_validator("test_float", 3.14)
+...     bg.integer_validator("neg_val", -1)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
-[TypeError] test_float must be an integer
+[ValueError] neg_val must be greater than 0
 
 >>> try:
-...     bg.integer_validator("test_none", None)
+...     bg.integer_validator("neg_large", -999)
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
-[TypeError] test_none must be an integer
+[ValueError] neg_large must be greater than 0
+
+# Tests limite supérieure (grand entier positif)
+>>> bg.integer_validator("big_val", 999999999999999999999999)
+
+# Tests différents noms avec underscores, espaces (espaces c’est pour voir, normalement pas conseillé)
+>>> bg.integer_validator("under_score_name", 10)
+>>> bg.integer_validator("name_with_spaces", 5)
+
+# Tests noms courts et longs
+>>> bg.integer_validator("a", 1)
+>>> bg.integer_validator("this_is_a_very_long_name_for_testing", 50)
+
+# Tests noms avec caractères spéciaux
+>>> bg.integer_validator("name-with-hyphen", 7)
+>>> bg.integer_validator("name.with.dot", 8)
+
+# Tests type float convertible en int (doit échouer, car c’est un float)
+>>> try:
+...     bg.integer_validator("float_1", 1.0)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] float_1 must be an integer
+
+>>> try:
+...     bg.integer_validator("float_2", 2.5)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] float_2 must be an integer
+
+# Tests area() encore une fois pour vérifier l’exception
+>>> try:
+...     bg.area()
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[Exception] area() is not implemented
+
+# Tests répétition, pas d'erreur attendue
+>>> bg.integer_validator("repeat_test", 42)
+>>> bg.integer_validator("repeat_test", 100)
+
+# Test integer_validator avec une instance d’une sous-classe de int (exemple custom int)
+>>> class MyInt(int):
+...     pass
+>>> bg.integer_validator("custom_int", MyInt(5))
+
+# Test integer_validator avec un float en chaîne (doit échouer)
+>>> try:
+...     bg.integer_validator("float_str", "3.14")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] float_str must be an integer
