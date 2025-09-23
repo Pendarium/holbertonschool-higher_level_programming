@@ -33,7 +33,7 @@ class BaseGeometry:
 
         Description:
             Lève une exception pour indiquer que
-            la méthode doit être implémentée 
+            la méthode doit être implémentée
             dans une sous-classe.
         """
         raise Exception("area() is not implemented")
@@ -51,7 +51,7 @@ class BaseGeometry:
             ValueError: If value <= 0.
 
         Description:
-            Valide que la valeur est un entier strictement supérieur à zéro. 
+            Valide que la valeur est un entier strictement supérieur à zéro.
             Sinon, lève une exception adaptée avec un message personnalisé.
         """
         if not isinstance(value, int):
