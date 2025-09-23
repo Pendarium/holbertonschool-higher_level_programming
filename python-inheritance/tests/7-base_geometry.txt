@@ -27,3 +27,15 @@
 ... except Exception as e:
 ...     print("[{}] {}".format(e.__class__.__name__, e))
 [Exception] area() is not implemented
+
+>>> try:
+...     bg.integer_validator("empty_value", None)
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] empty_value must be an integer
+
+>>> try:
+...     bg.integer_validator("empty_string", "")
+... except Exception as e:
+...     print("[{}] {}".format(e.__class__.__name__, e))
+[TypeError] empty_string must be an integer
