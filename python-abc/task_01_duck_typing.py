@@ -5,11 +5,10 @@ Module providing shape classes and a utility
 function to display shape information.
 
 Ce module définit une classe abstraite Shape
-ainsi que ses implémentations concrètes
-Circle et Rectangle. Il inclut également une
-fonction utilitaire pour afficher l'aire
-et le périmètre des formes, en utilisant
-le concept de duck typing.
+ainsi que ses implémentations concrètes Circle
+et Rectangle. Il inclut également une fonction
+utilitaire pour afficher l'aire et le périmètre
+des formes, en utilisant le concept de duck typing.
 """
 
 from abc import ABC, abstractmethod
@@ -21,14 +20,15 @@ class Shape(ABC):
     Abstract base class for geometric shapes.
 
     Classe de base abstraite pour les formes géométriques.
-    Elle impose l implémentation des méthodes area() et perimeter().
+    Elle impose l’implémentation des méthodes area()
+    et perimeter().
     """
 
     @abstractmethod
     def area(self):
         """Return the area of the shape.
 
-        Retourne l aire de la forme.
+        Retourne l’aire de la forme.
         """
         pass
 
@@ -58,7 +58,7 @@ class Circle(Shape):
     def area(self):
         """Calculate the area of the circle.
 
-        Calcule l aire du cercle.
+        Calcule l’aire du cercle.
         """
         return math.pi * self.radius ** 2
 
@@ -74,13 +74,15 @@ class Rectangle(Shape):
     """
     Rectangle shape defined by width and height.
 
-    Représente un rectangle défini par sa largeur et sa hauteur.
+    Représente un rectangle défini par sa largeur
+    et sa hauteur.
     """
 
     def __init__(self, width, height):
         """Initialize the rectangle with width and height.
 
-        Initialise le rectangle avec une largeur et une hauteur.
+        Initialise le rectangle avec une largeur
+        et une hauteur.
         """
         self.width = width
         self.height = height
@@ -88,7 +90,7 @@ class Rectangle(Shape):
     def area(self):
         """Calculate the area of the rectangle.
 
-        Calcule l aire du rectangle.
+        Calcule l’aire du rectangle.
         """
         return self.width * self.height
 
@@ -104,7 +106,8 @@ def shape_info(shape):
     """
     Print the area and perimeter of a shape using duck typing.
 
-    Affiche laire et le périmètre d une forme, en utilisant le duck typing.
+    Affiche l’aire et le périmètre d’une forme,
+    en utilisant le duck typing.
     """
     print("Area:", shape.area())
     print("Perimeter:", shape.perimeter())
