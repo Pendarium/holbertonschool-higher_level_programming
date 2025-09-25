@@ -7,7 +7,7 @@ function to display shape information.
 Ce module définit une classe abstraite Shape
 ainsi que ses implémentations concrètes Circle
 et Rectangle. Il inclut également une fonction
-utilitaire pour afficher l'aire et le périmètre
+utilitaire pour afficher l aire et le périmètre
 des formes, en utilisant le concept de duck typing.
 """
 
