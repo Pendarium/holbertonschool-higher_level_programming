@@ -20,7 +20,7 @@ class Shape(ABC):
     Abstract base class for geometric shapes.
 
     Classe de base abstraite pour les formes géométriques.
-    Elle impose l’implémentation des méthodes area()
+    Elle impose l implémentation des méthodes area()
     et perimeter().
     """
 
@@ -28,7 +28,7 @@ class Shape(ABC):
     def area(self):
         """Return the area of the shape.
 
-        Retourne l’aire de la forme.
+        Retourne l aire de la forme.
         """
         pass
 
@@ -58,7 +58,7 @@ class Circle(Shape):
     def area(self):
         """Calculate the area of the circle.
 
-        Calcule l’aire du cercle.
+        Calcule laire du cercle.
         """
         return math.pi * self.radius ** 2
 
@@ -90,7 +90,7 @@ class Rectangle(Shape):
     def area(self):
         """Calculate the area of the rectangle.
 
-        Calcule l’aire du rectangle.
+        Calcule l aire du rectangle.
         """
         return self.width * self.height
 
@@ -106,7 +106,7 @@ def shape_info(shape):
     """
     Print the area and perimeter of a shape using duck typing.
 
-    Affiche l’aire et le périmètre d’une forme,
+    Affiche l aire et le périmètre d une forme,
     en utilisant le duck typing.
     """
     print("Area:", shape.area())
