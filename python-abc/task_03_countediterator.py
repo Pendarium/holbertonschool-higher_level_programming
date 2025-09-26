@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+
+
 class CountedIterator:
     """
     An iterator wrapper that counts how many items have been iterated over.
