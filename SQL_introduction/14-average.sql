@@ -1,2 +1,3 @@
 -- this script can be use to calculate the average of score collum
-SELECT AVG(score) FROM second_table;
+SELECT AVG(score) AS average_score
+FROM second_table;
