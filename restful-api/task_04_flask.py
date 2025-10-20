@@ -5,20 +5,24 @@ app = Flask(__name__)
 # Dictionnaire des utilisateurs (vide au démarrage)
 users = {}
 
+
 @app.route("/")
 def home():
     """Racine de l'API - Retourne un message de bienvenue"""
     return "Welcome to the Flask API!"
+
 
 @app.route("/status")
 def status():
     """Vérifie le statut de l'API"""
     return "OK"
 
+
 @app.route("/data")
 def get_data():
     """Retourne la liste des noms d'utilisateurs disponibles"""
     return jsonify(list(users.keys()))
+
 
 @app.route("/users/<username>")
 def get_user(username):
@@ -27,6 +31,7 @@ def get_user(username):
         return jsonify(users[username])
     else:
         return jsonify({"error": "User not found"}), 404
+
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
