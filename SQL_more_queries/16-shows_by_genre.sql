@@ -7,5 +7,6 @@
 SELECT ts.title, g.name
 FROM tv_shows ts
 LEFT JOIN tv_show_genres tg ON ts.id = tg.tv_show_id
-LEFT JOIN genres g ON tg.genre_id = g.id
+LEFT JOIN tv_genres g ON tg.tv_genre_id = g.id
 ORDER BY ts.title ASC, g.name ASC;
+
