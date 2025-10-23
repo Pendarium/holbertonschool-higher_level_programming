@@ -1,5 +1,6 @@
--- this script can be use to check a specified values 
-USE hbtn_0d_usa;
+-- Script that lists all the cities of California found in the database hbtn_0d_usa
+-- Results are sorted by cities.id in ascending order
+-- Not allowed to use JOIN
 
 SELECT cities.id, cities.name
 FROM cities, states
