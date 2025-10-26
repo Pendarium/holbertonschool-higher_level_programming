@@ -1,7 +1,8 @@
 #!/usr/bin/python3
 """
-This module contains a script that does a data
-request to database
+Affiche toutes les lignes de la table states dont le nom correspond
+exactement à l'argument passé (sécurisé contre les injections).
+Usage: ./script.py <mysql_user> <mysql_password> <database> <state_name>
 """
 
 import MySQLdb
@@ -13,27 +14,22 @@ if __name__ == "__main__":
     database = sys.argv[3]
     name_arg = sys.argv[4]
 
-    # function to connect to a MySQL database
     db = MySQLdb.connect(
-        host="localhost", user=username, passwd=password,
-        db=database, port=3306
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database
     )
+
     cur = db.cursor()
-    # créer un curseur - permet d'avoir plusieurs environnement
-    # sur la même connexion à la DB ?
-
     cur.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY %s "
-        "ORDER BY id ASC", (name_arg,))
-    # envoie une requête
-    rows = cur.fetchall()
-    # récupère les lignes renvoyées par la base
-    # et les stock en liste de tuples
-    # on peut récupérer une ligne à la fois ou un nombre n de lignes
-    # avec fetchone() et fetchmany(n)
+        "SELECT * FROM states WHERE name = %s ORDER BY id ASC",
+        (name_arg,)
+    )
 
-    for element in rows:
-        print(element)
+    for row in cur.fetchall():
+        print(row)
 
     cur.close()
     db.close()
