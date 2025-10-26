@@ -27,7 +27,8 @@ if __name__ == '__main__':
     # Création du curseur et exécution de la requête SQL
     curseur = db.cursor()
     curseur.execute(
-        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC LIMIT 1".format(etat_recherche)
+        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(
+            etat_recherche)
     )
 
     # Affichage des résultats
