@@ -1,39 +1,38 @@
 #!/usr/bin/python3
 """
-This module contains a script that does a data
-request to database
+Affiche tous les états de la table states dont le nom correspond
+au nom fourni en argument.
 """
 
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-    name_arg = sys.argv[4]
+if __name__ == '__main__':
+    # Récupération des arguments
+    utilisateur = sys.argv[1]
+    mot_de_passe = sys.argv[2]
+    base = sys.argv[3]
+    etat_recherche = sys.argv[4]
 
-    # function to connect to a MySQL database
+    # Connexion à la base de données
     db = MySQLdb.connect(
-        host="localhost", user=username, passwd=password,
-        db=database, port=3306
+        host="localhost",
+        port=3306,
+        user=utilisateur,
+        passwd=mot_de_passe,
+        db=base
     )
-    cur = db.cursor()
-    # créer un curseur - permet d'avoir plusieurs environnement
-    # sur la même connexion à la DB ?
 
-    cur.execute(
-        "SELECT * FROM states WHERE name LIKE BINARY '{}' "
-        "ORDER BY id ASC".format(name_arg))
-    # envoie une requête
-    rows = cur.fetchall()
-    # récupère les lignes renvoyées par la base
-    # et les stock en liste de tuples
-    # on peut récupérer une ligne à la fois ou un nombre n de lignes
-    # avec fetchone() et fetchmany(n)
+    # Création du curseur et exécution de la requête SQL
+    curseur = db.cursor()
+    curseur.execute(
+        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(etat_recherche)
+    )
 
-    for element in rows:
-        print(element)
+    # Affichage des résultats
+    for ligne in curseur.fetchall():
+        print(ligne)
 
-    cur.close()
+    # Fermeture du curseur et de la connexion
+    curseur.close()
     db.close()
