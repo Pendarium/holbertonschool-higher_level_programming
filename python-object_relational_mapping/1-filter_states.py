@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 """
 Liste tous les états dont le nom commence par 'N' (majuscule)
