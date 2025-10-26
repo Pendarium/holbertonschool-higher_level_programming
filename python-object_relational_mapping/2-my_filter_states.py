@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """
 Affiche tous les états de la table states dont le nom correspond
 au nom fourni en argument.
