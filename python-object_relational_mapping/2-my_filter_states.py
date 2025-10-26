@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-
 """
-Liste tous les états dont le nom commence par 'N' (majuscule)
-depuis la base de données hbtn_0e_0_usa.
+Affiche tous les états de la table states dont le nom correspond
+au nom fourni en argument.
 """
 
 import MySQLdb
@@ -13,6 +12,7 @@ if __name__ == '__main__':
     utilisateur = sys.argv[1]
     mot_de_passe = sys.argv[2]
     base = sys.argv[3]
+    etat_recherche = sys.argv[4]
 
     # Connexion à la base de données
     db = MySQLdb.connect(
@@ -26,8 +26,7 @@ if __name__ == '__main__':
     # Création du curseur et exécution de la requête SQL
     curseur = db.cursor()
     curseur.execute(
-        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"
-
+        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(etat_recherche)
     )
 
     # Affichage des résultats
