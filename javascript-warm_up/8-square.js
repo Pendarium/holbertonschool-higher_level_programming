@@ -13,3 +13,4 @@ if (isNaN(size) || size <= 0) {
     console.log(ligne);
   }
 }
+
